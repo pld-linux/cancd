@@ -35,7 +35,7 @@ case "$1" in
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/cancd ]; then
 		msg_starting cancd
-		daemon cancd
+		daemon --user "$USER" /usr/sbin/cancd -p ${CANCD_PORT} -l "${CRASH_DIR}" -o "${CRASH_FORMAT}"
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/cancd
 	else

@@ -4,5 +4,18 @@
 # Nice level
 #SERVICE_RUN_NICE_LEVEL="+5"
 
-# other command-line options
-#DAEMON_OPTS=""
+# user to run as, root strongly discouraged
+# user should have /bin/false for a shell
+# but file access into /var
+USER="cancd"
+
+# port to listen on
+CANCD_PORT=6664
+
+# directory to output to
+CRASH_DIR="/var/log/cancd"
+
+# one file per minute, one dir per host/date
+#CRASH_FORMAT="%Q/%Y-%m-%d/%H:%M.log"
+# one file per day, one dir per host
+CRASH_FORMAT="%Q/%Y-%m-%d.log"
