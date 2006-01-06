@@ -19,7 +19,7 @@ Requires(pre):	/usr/bin/getgid
 Requires(pre):	/usr/sbin/groupadd
 Requires(pre):	/usr/sbin/useradd
 Requires:	/sbin/chkconfig
-Requires:	rc-scripts
+Requires:	rc-scripts >= 0.4.0.17
 Provides:	group(cancd)
 Provides:	user(cancd)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
