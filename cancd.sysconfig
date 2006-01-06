@@ -10,7 +10,7 @@
 USER="cancd"
 
 # port to listen on
-CANCD_PORT=6664
+CANCD_PORT=6666
 
 # directory to output to
 CRASH_DIR="/var/log/cancd"
