@@ -1,0 +1,8 @@
+# $Id$
+# Customized settings for CA NetConsole Daemon
+
+# Nice level
+#SERVICE_RUN_NICE_LEVEL="+5"
+
+# other command-line options
+#DAEMON_OPTS=""
