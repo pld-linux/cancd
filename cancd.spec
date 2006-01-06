@@ -1,7 +1,7 @@
 Summary:	The CA NetConsole Daemon
 Name:		cancd
 Version:	0.1.0
-Release:	0.4
+Release:	0.5
 License:	GPL
 Group:		Applications/File
 Source0:	http://oss.oracle.com/projects/cancd/dist/files/source/%{name}-%{version}.tar.gz
@@ -73,5 +73,5 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/cancd
 %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/cancd
-%attr(754,root,root) %config /etc/rc.d/init.d/cancd
+%attr(754,root,root) /etc/rc.d/init.d/cancd
 %attr(770,root,cancd) %dir /var/log/cancd
