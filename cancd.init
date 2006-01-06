@@ -1,0 +1,72 @@
+#!/bin/sh
+#
+# cancd	cancd short service description
+#
+# chkconfig:	2345 29 20
+#
+# description:	This is the CA NetConsole Daemon, \
+#	a daemon to receive output from the Linux netconsole driver.
+#
+# $Id$
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+# Get network config
+. /etc/sysconfig/network
+
+# Get service config - may override defaults
+[ -f /etc/sysconfig/cancd ] && . /etc/sysconfig/cancd
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network ]; then
+		msg_network_down cancd
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+
+# See how we were called.
+case "$1" in
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/cancd ]; then
+		msg_starting cancd
+		daemon cancd
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/cancd
+	else
+		msg_already_running cancd
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/cancd ]; then
+		# Stop daemons.
+		msg_stopping cancd
+		killproc cancd
+		rm -f /var/lock/subsys/cancd
+	else
+		msg_not_running cancd
+	fi
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  status)
+	status cancd
+	RETVAL=$?
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL
+
+# This must be last line !
+# vi:syntax=sh
