@@ -1,4 +1,5 @@
 Summary:	The CA NetConsole Daemon
+Summary(pl):	Demon CA NetConsole
 Name:		cancd
 Version:	0.1.0
 Release:	0.5
@@ -27,6 +28,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 This is the CA NetConsole Daemon, a daemon to receive output from the
 Linux netconsole driver.
+
+%description -l pl
+To jest demon CA NetConsole - demon odbieraj±cy wyj¶cie z linuksowego
+sterownika netconsole (konsoli sieciowej).
 
 %prep
 %setup -q
