@@ -1,0 +1,12 @@
+--- cancd-0.1.0/cancd.c~	2006-06-13 09:29:06.436946340 +0300
++++ cancd-0.1.0/cancd.c	2006-06-13 09:29:10.687041938 +0300
+@@ -169,6 +169,9 @@
+         }
+     }
+ 
++    /* terminate the format string! */
++    *fptr = '\0';
++
+     newstr = malloc(sizeof(char) * PATH_MAX);
+     if (!newstr)
+     {

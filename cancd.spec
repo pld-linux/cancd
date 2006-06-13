@@ -2,7 +2,7 @@ Summary:	The CA NetConsole Daemon
 Summary(pl):	Demon CA NetConsole
 Name:		cancd
 Version:	0.1.0
-Release:	0.5
+Release:	0.8
 License:	GPL
 Group:		Applications/File
 Source0:	http://oss.oracle.com/projects/cancd/dist/files/source/%{name}-%{version}.tar.gz
@@ -10,6 +10,7 @@ Source0:	http://oss.oracle.com/projects/cancd/dist/files/source/%{name}-%{versio
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Patch0:		%{name}-make.patch
+Patch1:		%{name}-nullterminate.patch
 URL:		http://oss.oracle.com/projects/cancd/
 BuildRequires:	rpmbuild(macros) >= 1.228
 Requires(post,preun):	/sbin/chkconfig
@@ -36,6 +37,7 @@ sterownika netconsole (konsoli sieciowej).
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} \
