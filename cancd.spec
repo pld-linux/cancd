@@ -2,7 +2,7 @@ Summary:	The CA NetConsole Daemon
 Summary(pl.UTF-8):	Demon CA NetConsole
 Name:		cancd
 Version:	0.1.0
-Release:	0.8
+Release:	1
 License:	GPL
 Group:		Applications/File
 Source0:	http://oss.oracle.com/projects/cancd/dist/files/source/%{name}-%{version}.tar.gz
