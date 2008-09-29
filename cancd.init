@@ -28,9 +28,7 @@ else
 	exit 0
 fi
 
-# See how we were called.
-case "$1" in
-  start)
+start() {
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/cancd ]; then
 		msg_starting cancd
@@ -40,8 +38,9 @@ case "$1" in
 	else
 		msg_already_running cancd
 	fi
-	;;
-  stop)
+}
+
+stop() {
 	if [ -f /var/lock/subsys/cancd ]; then
 		# Stop daemons.
 		msg_stopping cancd
@@ -50,11 +49,20 @@ case "$1" in
 	else
 		msg_not_running cancd
 	fi
+}
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+  	start
+	;;
+  stop)
+  	stop
 	;;
   restart|force-reload)
-	$0 stop
-	$0 start
-	exit $?
+	stop
+	start
 	;;
   status)
 	status cancd
@@ -66,6 +74,3 @@ case "$1" in
 esac
 
 exit $RETVAL
-
-# This must be last line !
-# vi:syntax=sh
