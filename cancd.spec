@@ -1,14 +1,8 @@
-# TODO
-# - fix alpha build:
-#  alpha-pld-linux-gcc -Wall -O2 -mieee  -DVERSION="\"0.1.0\""   -c -o cancd.o cancd.c
-#  cancd.c: In function `setup_signals':
-#  cancd.c:95: error: structure has no member named `sa_restorer'
-#  make: *** [cancd.o] Error 1
 Summary:	The CA NetConsole Daemon
 Summary(pl.UTF-8):	Demon CA NetConsole
 Name:		cancd
 Version:	0.1.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/File
 Source0:	http://oss.oracle.com/projects/cancd/dist/files/source/%{name}-%{version}.tar.gz
@@ -17,6 +11,8 @@ Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-nullterminate.patch
+Patch2:		%{name}-c_cleanup.patch
+Patch3:		%{name}-limits.patch
 URL:		http://oss.oracle.com/projects/cancd/
 BuildRequires:	rpmbuild(macros) >= 1.228
 Requires(post,preun):	/sbin/chkconfig
@@ -45,6 +41,8 @@ sterownika netconsole (konsoli sieciowej).
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p0
 
 %build
 %{__make} \

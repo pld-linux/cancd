@@ -1,0 +1,6 @@
+# TODO:
+- fix alpha build:
+  alpha-pld-linux-gcc -Wall -O2 -mieee  -DVERSION="\"0.1.0\""   -c -o cancd.o cancd.c
+  cancd.c: In function `setup_signals':
+  cancd.c:95: error: structure has no member named `sa_restorer'
+  make: *** [cancd.o] Error 1
