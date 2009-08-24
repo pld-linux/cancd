@@ -2,7 +2,7 @@
 #
 # cancd	netconsole daemon
 #
-# chkconfig:	2345 29 20
+# chkconfig:	2345 11 89
 #
 # description:	This is the CA NetConsole Daemon, \
 #	a daemon to receive output from the Linux netconsole driver.
