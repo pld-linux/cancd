@@ -66,7 +66,7 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/cancd
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/cancd
 
 %clean
-rm -rf "$RPM_BUILD_ROOT"
+rm -rf $RPM_BUILD_ROOT
 
 %pre
 %groupadd -g 162 cancd
